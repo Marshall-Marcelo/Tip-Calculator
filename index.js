@@ -47,6 +47,8 @@ reset.addEventListener("click", (e) => {
   tip_buttons.forEach((button) => {
     clearButtonStyle(button);
   });
+  tip_person.textContent = 0;
+  total_person.textContent = 0;
 });
 
 const getValue = (select) => {

@@ -69,6 +69,22 @@ body {
   border-style: none;
   border-radius: 15px;
   padding-right: 1em;
+  cursor: pointer;
+}
+
+.container .content .options .bill:hover,
+.container .content .options .person:hover,
+.container .content .options .tip-grid input:hover {
+  transition: 50ms;
+  border-style: solid;
+  border-color: var(--green400);
+}
+
+.bill-input input:focus,
+.tip-input input:focus,
+.people-input input:focus {
+  border-color: var(--green400);
+  outline: none;
 }
 
 .container .content .options .tip-grid {
@@ -93,6 +109,22 @@ body {
   color: var(--white);
   font-size: 1.5em;
   font-weight: var(--heavy);
+}
+
+.container .content .options .tip-grid button:hover {
+  cursor: pointer;
+  background-color: var(--green400);
+  transition: 0.15s;
+}
+
+.container .content .options .tip-grid button.active {
+  background-color: var(--green400);
+}
+
+.container .content .result button:hover {
+  cursor: pointer;
+  background-color: var(--grey200);
+  transition: 0.15s;
 }
 
 .container .content .result {

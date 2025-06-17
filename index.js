@@ -5,6 +5,8 @@ const tip_grid = document.getElementById("tip-grid");
 const tip_buttons = tip_grid.querySelectorAll("button");
 const tip_person = document.getElementById("tip-person");
 const total_person = document.getElementById("total-person");
+const reset = document.getElementById("reset");
+const person_label = document.getElementById("person-label-error");
 let tip_value = 0;
 let bill_value = 0;
 let people_value = 0;
@@ -26,8 +28,24 @@ tip_input.addEventListener("keyup", (e) => {
 
 tip_buttons.forEach((button) => {
   button.addEventListener("click", (e) => {
+    tip_buttons.forEach((button) => {
+      clearButtonStyle(button);
+    });
+    e.target.classList.add("active");
     tip_value = getValue(e) / 100;
     setResult();
+  });
+});
+
+reset.addEventListener("click", (e) => {
+  bill_input.value = "";
+  tip_input.value = "";
+  person_input.value = "";
+  tip_value = 0;
+  bill_value = 0;
+  people_value = 0;
+  tip_buttons.forEach((button) => {
+    clearButtonStyle(button);
   });
 });
 
@@ -41,7 +59,7 @@ const calculateTip = (bill, tip, people) => {
     total: 0,
   };
 
-  if (!bill || !tip || !people) {
+  if (isNaN(bill) || isNaN(tip) || isNaN(people) || people === 0) {
     return result;
   }
 
@@ -62,4 +80,8 @@ const setResult = () => {
   let result = calculateTip(bill_value, tip_value, people_value);
   tip_person.textContent = result.tip;
   total_person.textContent = result.total;
+};
+
+const clearButtonStyle = (button) => {
+  button.classList.remove("active");
 };
